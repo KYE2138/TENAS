@@ -69,6 +69,7 @@ def get_ntk_n(xloader, networks, recalbn=0, train_mode=False, num_batch=-1):
                 # 清空cache
                 torch.cuda.empty_cache()
     ######
+    # 
     grads = [torch.stack(_grads, 0) for _grads in grads]
     ntks = [torch.einsum('nc,mc->nm', [_grads, _grads]) for _grads in grads]
     conds = []
